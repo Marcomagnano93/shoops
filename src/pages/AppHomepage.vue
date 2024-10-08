@@ -46,7 +46,7 @@ export default {
     },
     addItem(newItem){
       // VALIDATIONS
-      if(this.newItem.itemName === ''){
+      if(this.newItem.itemName === '' || this.newItem.itemName === ' '){
           this.nameError = true;            
       }
       else if(this.newItem.itemQty === ''){
@@ -108,17 +108,18 @@ export default {
             </div>
             <div class="my-4">
                 <ul>
+                    <li v-if="this.store.items.length === 0" class="my2"><h3>Aggiungi un prodotto per creare la tua lista!</h3></li>
                     <li class="d-flex gap-3 my-2"
                     v-for="item in this.store.items">
 
-                <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
-                    <font-awesome-icon :icon="['fas', 'trash-can']" />
-                </div>
-                
-                <div class="item_text">
-                    <p class="item_font c_red">{{ item.itemName }}</p>
-                    <p class="item_font">{{ item.itemQty }}</p>
-                </div>
+                        <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
+                            <font-awesome-icon :icon="['fas', 'trash-can']" />
+                        </div>
+                        
+                        <div class="item_text">
+                            <p class="item_font c_red">{{ item.itemName }}</p>
+                            <p class="item_font">{{ item.itemQty }}</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -137,7 +138,7 @@ export default {
 
 <style>
 .form_content {
-  width: 800px;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -147,10 +148,13 @@ export default {
 }
 
 .alarm{
-    color: var(--red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--lightpinky);
     border-radius: 8px;
     padding: 2px;
-    background-color: var(--lightpinky);
+    background-color: var(--gray);
     margin-top: 4px;
 }
 </style>

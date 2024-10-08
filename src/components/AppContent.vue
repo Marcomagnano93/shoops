@@ -1,6 +1,5 @@
 <script>
 import { store } from '../store.js'
-
 export default {
   components: {
   },
@@ -83,15 +82,34 @@ export default {
 </script>
 
 <template>
+
   <main class="bg_lightpinky">
     <section class="h-100">
+      <div class="container py-5 h-100">
+        
+
+          <div class="form_content bg_orange">
+            <!-- Item Name -->
+            <div>
+              <input type="text" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto">
+              <div v-if="this.nameError === true">Inserisci un nome</div>
+            </div>
+
+            <!-- QTY -->
+            <div>
+              <input type="number" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità">
+              <div v-if="this.qtyError === true">Inserisci una quantità</div>
+              <div v-if="this.qtyNegError === true">La quantità deve essere maggiore di 0</div>
+              <div v-if="this.qtyNaNError === true">La quantità deve essere un numero!</div>
+            </div>
+            <div class="btn btn-primary" @click="addItem(this.newItem)">Aggiungi</div>
+          </div>
+
+        
+
         <div class="container d-flex justify-content-center">
           <ul class="shop_list">
-            <li v-if="this.store.items.length === 0" class="my2">
-                <h3>A quanto pare non c'è nulla nella tua lista</h3>
-                <p>Creala qui: <RouterLink to="/">Home</RouterLink></p>
-            </li>
-            <li v-if="this.store.items.length > 0" class="table_head">
+            <li class="d-flex justify-content-between big_icon">
               <p>Nome</p>
               <p>Quantità</p>
             </li>
@@ -103,41 +121,23 @@ export default {
               <div class="icon c_orange bg_gray"  @click="checkItem(item)">
                 <font-awesome-icon :icon="['fas', 'cart-arrow-down']" />
               </div>
-              <!-- <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
+              <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
                 <font-awesome-icon :icon="['fas', 'trash-can']" />
-              </div> -->
+              </div>
               
               <div class="item_text">
                 <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
                 <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
-                <p class="item_font px-5">{{ item.itemQty }}</p>
+                <p class="item_font">{{ item.itemQty }}</p>
               </div>
               
             </li>
           </ul>
         </div>
+      </div>
     </section>
   </main>
+
 </template>
 
-<style>
-.table_head{
-    font-size: 32px;
-    background-color: var(--orange);
-    color: var(--lightpinky);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 12px 0 12px;
-    border-radius: 12px;
-}
-.shop_list{
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 12px 0 0 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 800px;
-}
-</style>
+<style></style>

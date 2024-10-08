@@ -47,6 +47,9 @@ export default {
   align-items: center;
 }
 
+h1{
+  font-weight: 700;
+}
 .link{
   text-decoration: none;
   color: var(--orange);
