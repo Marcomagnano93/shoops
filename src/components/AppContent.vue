@@ -13,6 +13,7 @@ export default {
       newItem: {
         itemName: '',
         itemQty: 1,
+        checked: false,
       }
     }
   },
@@ -31,6 +32,14 @@ export default {
       this.qtyError = false;
       this.qtyNegError = false;
       this.qtyNaNError = false;
+    },
+    checkItem(item){
+      if(item.checked === false){
+        return item.checked = true;
+      }
+      else {
+        return item.checked = false;
+      }
     },
     addItem(newItem){
       // VALIDATIONS
@@ -56,14 +65,13 @@ export default {
         this.keep();
         this.newItem.itemName = '';
         this.newItem.itemQty = 1;
-
+        this.newItem.checked = false;
       }
     },
     removeItem(item){
-      this.store.items.splice(item, 1);
+      this.store.items.splice(this.store.items.indexOf(item), 1);
       this.keep();
     },
-
   },
   mounted() {
     this.keepUp();
@@ -82,29 +90,41 @@ export default {
           <div class="form_content">
             <!-- Item Name -->
             <div>
-              <input type="text" v-model="newItem.itemName" @click="errorNameSwitcher()">
+              <input type="text" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto">
               <div v-if="this.nameError === true">Inserisci un nome</div>
             </div>
 
             <!-- QTY -->
             <div>
-              <input type="number" v-model="newItem.itemQty" @click="errorQtySwitcher()">
+              <input type="number" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità">
               <div v-if="this.qtyError === true">Inserisci una quantità</div>
               <div v-if="this.qtyNegError === true">La quantità deve essere maggiore di 0</div>
               <div v-if="this.qtyNaNError === true">La quantità deve essere un numero!</div>
             </div>
             <div class="btn btn-primary" @click="addItem(this.newItem)">Aggiungi</div>
           </div>
-
         </div>
-        <div class="row">
-          <div class="col"
-          v-for="item in this.store.items"
-          >
-            <p>{{ item.itemName }}</p>
 
-            <p>{{ item.itemQty }}</p>
-            <div class="btn btn-danger" @click="removeItem(item)">rimuovi</div>
+        <div class="container">
+          <div class="shop_list">
+            <div class="d-flex gap-3"
+            v-for="item in this.store.items"
+            >
+
+              <div class="icon"  @click="checkItem(item)">
+                <font-awesome-icon :icon="['fas', 'check']"/>
+              </div>
+              <div class="icon"  @click="removeItem(item)" >
+                <font-awesome-icon :icon="['fas', 'trash-can']" />
+              </div>
+              
+                <div class="item_text">
+                  <p class="check" v-if="item.checked === true">{{ item.itemName }}</p>
+                  <p v-if="item.checked === false">{{ item.itemName }}</p>
+                  <p>Quantità: {{ item.itemQty }}</p>
+                </div>
+              
+            </div>
           </div>
         </div>
       </div>

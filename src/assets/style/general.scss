@@ -1,4 +1,4 @@
-/* @use './partials/exmaple.scss'; */
+@use './partials/palette.scss'; 
 
 #app {
   height: 100vh;
@@ -16,4 +16,33 @@ main {
   max-width: 400px;
   display: flex;
   gap: 16px;
+}
+
+.shop_list{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item_text{
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.icon{
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: lightgray;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+// utilities
+.check {
+  text-decoration: line-through;
 }
