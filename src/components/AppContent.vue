@@ -83,7 +83,7 @@ export default {
 
 <template>
 
-  <main>
+  <main class="bg_lightpinky">
     <section class="h-100">
       <div class="container py-5 h-100">
         <div class="row">
@@ -111,17 +111,17 @@ export default {
             v-for="item in this.store.items"
             >
 
-              <div class="icon"  @click="checkItem(item)">
-                <font-awesome-icon :icon="['fas', 'check']"/>
+              <div class="icon c_orange bg_gray"  @click="checkItem(item)">
+                <font-awesome-icon :icon="['fas', 'cart-arrow-down']" />
               </div>
-              <div class="icon"  @click="removeItem(item)" >
+              <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
                 <font-awesome-icon :icon="['fas', 'trash-can']" />
               </div>
               
                 <div class="item_text">
-                  <p class="check" v-if="item.checked === true">{{ item.itemName }}</p>
-                  <p v-if="item.checked === false">{{ item.itemName }}</p>
-                  <p>Quantità: {{ item.itemQty }}</p>
+                  <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
+                  <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
+                  <p class="itemQty_font">Quantità: {{ item.itemQty }}</p>
                 </div>
               
             </div>

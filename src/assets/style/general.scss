@@ -1,4 +1,5 @@
 @use './partials/palette.scss'; 
+@use './partials/fonts.scss'; 
 
 #app {
   height: 100vh;
@@ -6,6 +7,11 @@
   max-width: 100%;
   display: flex;
   flex-direction: column;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
@@ -27,16 +33,17 @@ main {
 .item_text{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 200px;
 }
 
 .icon{
-  color: red;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 9999px;
-  background-color: lightgray;
+
   width: 32px;
   height: 32px;
   cursor: pointer;
