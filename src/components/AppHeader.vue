@@ -20,6 +20,8 @@ export default {
         <div class="big_icon">
           <font-awesome-icon :icon="['fab', 'opencart']" />
         </div>
+        <RouterLink to="/">Go to Home</RouterLink>
+        <RouterLink to="/carrello">Cart</RouterLink>
       </div>
     </section>
   </header>

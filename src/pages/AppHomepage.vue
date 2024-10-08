@@ -1,5 +1,8 @@
+
+
 <script>
 import { store } from '../store.js'
+
 export default {
   components: {
   },
@@ -82,8 +85,7 @@ export default {
 </script>
 
 <template>
-
-  <main class="bg_lightpinky">
+ <main class="bg_lightpinky">
     <section class="h-100">
       <div class="container py-5 h-100">
         
@@ -107,33 +109,7 @@ export default {
 
         
 
-        <div class="container d-flex justify-content-center">
-          <ul class="shop_list">
-            <li class="d-flex justify-content-between big_icon">
-              <p>Nome</p>
-              <p>Quantità</p>
-            </li>
-
-            <li class="d-flex gap-3"
-            v-for="item in this.store.items"
-            >
-
-              <div class="icon c_orange bg_gray"  @click="checkItem(item)">
-                <font-awesome-icon :icon="['fas', 'cart-arrow-down']" />
-              </div>
-              <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
-                <font-awesome-icon :icon="['fas', 'trash-can']" />
-              </div>
-              
-              <div class="item_text">
-                <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
-                <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
-                <p class="item_font">{{ item.itemQty }}</p>
-              </div>
-              
-            </li>
-          </ul>
-        </div>
+      
       </div>
     </section>
   </main>

@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store.js'
+
 export default {
   components: {
   },
@@ -82,31 +83,8 @@ export default {
 </script>
 
 <template>
-
   <main class="bg_lightpinky">
     <section class="h-100">
-      <div class="container py-5 h-100">
-        
-
-          <div class="form_content bg_orange">
-            <!-- Item Name -->
-            <div>
-              <input type="text" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto">
-              <div v-if="this.nameError === true">Inserisci un nome</div>
-            </div>
-
-            <!-- QTY -->
-            <div>
-              <input type="number" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità">
-              <div v-if="this.qtyError === true">Inserisci una quantità</div>
-              <div v-if="this.qtyNegError === true">La quantità deve essere maggiore di 0</div>
-              <div v-if="this.qtyNaNError === true">La quantità deve essere un numero!</div>
-            </div>
-            <div class="btn btn-primary" @click="addItem(this.newItem)">Aggiungi</div>
-          </div>
-
-        
-
         <div class="container d-flex justify-content-center">
           <ul class="shop_list">
             <li class="d-flex justify-content-between big_icon">
@@ -134,10 +112,8 @@ export default {
             </li>
           </ul>
         </div>
-      </div>
     </section>
   </main>
-
 </template>
 
 <style></style>

@@ -19,9 +19,11 @@ main {
 }
 
 .form_content {
-  max-width: 400px;
+  width: 800px;
   display: flex;
   gap: 16px;
+  border-radius: 24px;
+
 }
 
 .shop_list{
@@ -31,14 +33,14 @@ main {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 400px;
+  width: 800px;
 }
 
 .item_text{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
+  width: 800px;
 }
 
 .icon{
@@ -46,12 +48,16 @@ main {
   justify-content: center;
   align-items: center;
   border-radius: 9999px;
-  width: 32px;
-  height: 32px;
+  font-size: 20px;
+  width: 60px;
   cursor: pointer;
 }
 
 // utilities
 .check {
   text-decoration: line-through;
+}
+
+ul, ol {
+  list-style: none;
 }
