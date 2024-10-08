@@ -7,15 +7,15 @@ export default {
   data() {
     return {
       store,
-      nameError: false,
-      qtyError: false,
-      qtyNegError: false,
-      qtyNaNError: false,
-      newItem: {
-        itemName: '',
-        itemQty: 1,
-        checked: false,
-      }
+    //   nameError: false,
+    //   qtyError: false,
+    //   qtyNegError: false,
+    //   qtyNaNError: false,
+    //   newItem: {
+    //     itemName: '',
+    //     itemQty: 1,
+    //     checked: false,
+    //   }
     }
   },
   methods: {
@@ -110,8 +110,8 @@ export default {
               <div class="item_text">
                 <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
                 <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
-                <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }}</p>
-                <p v-else class="item_font">{{ item.itemQty.toFixed(2) }}</p>
+                <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
+                <p v-else class="item_font">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
               </div>
               
             </li>

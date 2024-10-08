@@ -17,6 +17,7 @@ export default {
         itemName: '',
         itemQty: 1,
         checked: false,
+        kilos: false
       }
     }
   },
@@ -117,8 +118,8 @@ export default {
 
               <!-- TYPE -->
                 <div class="form-check form-switch">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Misura in KG</label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" >
+                    <label class="form-check-label c_lightpinky" for="flexSwitchCheckChecked">Misura in KG</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="newItem.kilos">
                 </div>
 
               <div class="button_gray" @click="addItem(this.newItem)">Aggiungi</div>
@@ -135,8 +136,8 @@ export default {
                         
                         <div class="item_text">
                             <p class="item_font c_red">{{ item.itemName }}</p>
-                            <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }}</p>
-                            <p v-else class="item_font">{{ item.itemQty.toFixed(2) }}</p>
+                            <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
+                            <p v-else class="item_font">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
                         </div>
                     </li>
                 </ul>
