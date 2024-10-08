@@ -49,7 +49,7 @@ export default {
       if(this.newItem.itemName === '' || this.newItem.itemName === ' '){
           this.nameError = true;            
       }
-      else if(this.newItem.itemQty === ''){
+      else if(this.newItem.itemQty === '' || this.newItem.itemQty > 999){
           this.qtyError = true;
       }
       else if(this.newItem.itemQty <= 0){
@@ -64,11 +64,22 @@ export default {
         this.qtyError = false;
         this.qtyNegError = false;
         this.qtyNaNError = false;
-        this.store.items.push({...newItem})
-        this.keep();
-        this.newItem.itemName = '';
-        this.newItem.itemQty = 1;
-        this.newItem.checked = false;
+
+        let cartItem = this.store.items.find((item) => item.itemName === this.newItem.itemName);
+        if(cartItem){
+            cartItem.itemQty += this.newItem.itemQty;
+            this.keep();
+            this.newItem.itemName = '';
+            this.newItem.itemQty = 1;
+            this.newItem.checked = false;
+        }
+        else{
+            this.store.items.push({...newItem})
+            this.keep();
+            this.newItem.itemName = '';
+            this.newItem.itemQty = 1;
+            this.newItem.checked = false;
+        }
       }
     },
     removeItem(item){
@@ -78,7 +89,6 @@ export default {
   },
   mounted() {
     this.keepUp();
-
   }
 }
 
@@ -92,18 +102,25 @@ export default {
             <div class="form_content bg_orange">
               <!-- Item Name -->
               <div>
-                <input type="text" class="form-control" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto">
+                <input type="text" class="form-control" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto" required>
                 <div class="alarm" v-if="this.nameError === true">Inserisci un nome</div>
                 
               </div>
     
               <!-- QTY -->
               <div>
-                <input type="number" class="form-control" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità">
+                <input type="number" class="form-control" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità 1-999" required>
                 <div class="alarm" v-if="this.qtyError === true">Inserisci una quantità</div>
                 <div class="alarm" v-if="this.qtyNegError === true">La quantità deve essere maggiore di 0</div>
                 <div class="alarm" v-if="this.qtyNaNError === true">La quantità deve essere un numero!</div>
               </div>
+
+              <!-- TYPE -->
+                <div class="form-check form-switch">
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Misura in KG</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" >
+                </div>
+
               <div class="button_gray" @click="addItem(this.newItem)">Aggiungi</div>
             </div>
             <div class="my-4">
@@ -118,7 +135,8 @@ export default {
                         
                         <div class="item_text">
                             <p class="item_font c_red">{{ item.itemName }}</p>
-                            <p class="item_font">{{ item.itemQty }}</p>
+                            <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }}</p>
+                            <p v-else class="item_font">{{ item.itemQty.toFixed(2) }}</p>
                         </div>
                     </li>
                 </ul>
