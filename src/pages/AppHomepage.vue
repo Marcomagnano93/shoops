@@ -87,25 +87,44 @@ export default {
 <template>
  <main class="bg_lightpinky">
     <section class="h-100">
-      <div class="container py-5 h-100">
-        
-
-          <div class="form_content bg_orange">
-            <!-- Item Name -->
-            <div>
-              <input type="text" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto">
-              <div v-if="this.nameError === true">Inserisci un nome</div>
+      <div class="container my-3 d-flex justify-content-center align-center">
+        <div class="d-flex flex-column">
+            <div class="form_content bg_orange">
+              <!-- Item Name -->
+              <div>
+                <input type="text" class="form-control" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto">
+                <div class="alarm" v-if="this.nameError === true">Inserisci un nome</div>
+                
+              </div>
+    
+              <!-- QTY -->
+              <div>
+                <input type="number" class="form-control" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità">
+                <div class="alarm" v-if="this.qtyError === true">Inserisci una quantità</div>
+                <div class="alarm" v-if="this.qtyNegError === true">La quantità deve essere maggiore di 0</div>
+                <div class="alarm" v-if="this.qtyNaNError === true">La quantità deve essere un numero!</div>
+              </div>
+              <div class="button_gray" @click="addItem(this.newItem)">Aggiungi</div>
             </div>
+            <div class="my-4">
+                <ul>
+                    <li class="d-flex gap-3 my-2"
+                    v-for="item in this.store.items">
 
-            <!-- QTY -->
-            <div>
-              <input type="number" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità">
-              <div v-if="this.qtyError === true">Inserisci una quantità</div>
-              <div v-if="this.qtyNegError === true">La quantità deve essere maggiore di 0</div>
-              <div v-if="this.qtyNaNError === true">La quantità deve essere un numero!</div>
+                <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
+                    <font-awesome-icon :icon="['fas', 'trash-can']" />
+                </div>
+                
+                <div class="item_text">
+                    <p class="item_font c_red">{{ item.itemName }}</p>
+                    <p class="item_font">{{ item.itemQty }}</p>
+                </div>
+                    </li>
+                </ul>
             </div>
-            <div class="btn btn-primary" @click="addItem(this.newItem)">Aggiungi</div>
-          </div>
+        </div>
+
+
 
         
 
@@ -116,4 +135,22 @@ export default {
 
 </template>
 
-<style></style>
+<style>
+.form_content {
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
+  border-radius: 24px;
+  padding: 32px;
+}
+
+.alarm{
+    color: var(--red);
+    border-radius: 8px;
+    padding: 2px;
+    background-color: var(--lightpinky);
+    margin-top: 4px;
+}
+</style>

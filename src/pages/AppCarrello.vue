@@ -99,9 +99,9 @@ export default {
               <div class="icon c_orange bg_gray"  @click="checkItem(item)">
                 <font-awesome-icon :icon="['fas', 'cart-arrow-down']" />
               </div>
-              <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
+              <!-- <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
                 <font-awesome-icon :icon="['fas', 'trash-can']" />
-              </div>
+              </div> -->
               
               <div class="item_text">
                 <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
@@ -116,4 +116,14 @@ export default {
   </main>
 </template>
 
-<style></style>
+<style>
+.shop_list{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 800px;
+}
+</style>

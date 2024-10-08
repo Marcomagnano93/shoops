@@ -27,8 +27,8 @@ export default {
           <div class="col">
             <p>I miei contatti: </p>
             <ul class="stars d-flex gap-4  justify-content-center">
-              <li><div class="btn btn-info btn-sm"><a href="https://www.linkedin.com/in/marcomagnano93/" class="link goldsand ">Linkedin</a></div></li>
-              <li><div class="btn btn-warning btn-sm"><a href="https://github.com/Marcomagnano93" class="link goldsand ">GitHub</a></div></li>
+              <li><div class="btn btn-success btn-sm"><a href="https://www.linkedin.com/in/marcomagnano93/" class="link goldsand ">Linkedin</a></div></li>
+              <li><div class="btn btn-success btn-sm"><a href="https://github.com/Marcomagnano93" class="link goldsand ">GitHub</a></div></li>
             </ul>
           </div>
         </div>
