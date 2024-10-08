@@ -106,8 +106,13 @@ export default {
         </div>
 
         <div class="container">
-          <div class="shop_list">
-            <div class="d-flex gap-3"
+          <ul class="shop_list">
+            <li class="d-flex justify-content-between big_icon">
+              <p>Nome</p>
+              <p>Quantità</p>
+            </li>
+
+            <li class="d-flex gap-3"
             v-for="item in this.store.items"
             >
 
@@ -118,14 +123,14 @@ export default {
                 <font-awesome-icon :icon="['fas', 'trash-can']" />
               </div>
               
-                <div class="item_text">
-                  <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
-                  <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
-                  <p class="itemQty_font">Quantità: {{ item.itemQty }}</p>
-                </div>
+              <div class="item_text">
+                <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
+                <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
+                <p class="item_font">{{ item.itemQty }}</p>
+              </div>
               
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
