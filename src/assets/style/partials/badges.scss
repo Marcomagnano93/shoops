@@ -1,0 +1,64 @@
+:root{
+        // colori tipologie
+        --Frutta: #0f8926;
+        --Pesce:  #478688;
+        --Verdura:  #93d21e;
+        --Carne:  #EB926A;
+        --Latticini:  #908f8b;
+        --Panetteria:  #D5A633;
+        --Scatolame:  #906262;
+        --Varie:  #F8B2BC;
+        --Etnico:  #cb2b43;
+        --Surgelati:  #1ebace;
+        --Farina:  #ac9d5b;
+        --Pasta-Riso: #81480c;
+}
+
+// .badge_{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 2px 4px 2px 4px;
+//     border-radius: 8px;
+//     color: #F5CAC3;
+// }
+
+.Frutta{
+    background-color: var(--Frutta);
+}
+
+.Pesce{
+    background-color: var(--Pesce);
+}
+
+.Verdura{
+    background-color: var(--Verdura);
+}
+
+.Carne{
+    background-color: var(--Carne);
+}
+.Latticini{
+    background-color: var(--Latticini);
+}
+.Panetteria{
+    background-color: var(--Panetteria);
+}
+.Scatolame{
+    background-color: var(--Scatolame);
+}
+.Varie{
+    background-color: var(--Varie);
+}
+.Etnico{
+    background-color: var(--Etnico);
+}
+.Surgelati{
+    background-color: var(--Surgelati);
+}
+.Farina{
+    background-color: var(--Farina);
+}
+.Pasta-Riso{
+    background-color: var(--Pasta-Riso);
+}

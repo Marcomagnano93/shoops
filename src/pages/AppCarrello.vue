@@ -100,16 +100,20 @@ export default {
             v-for="item in this.store.items"
             >
 
-              <div class="icon c_orange bg_gray"  @click="checkItem(item)">
+              <div v-if="item.checked === true" class="icon c_orange bg_gray"  @click="checkItem(item)">
                 <font-awesome-icon :icon="['fas', 'cart-arrow-down']" />
               </div>
-              <!-- <div class="icon c_red bg_pinky"  @click="removeItem(item)" >
-                <font-awesome-icon :icon="['fas', 'trash-can']" />
-              </div> -->
+              <div v-if="item.checked === false" class="icon c_orange bg_red"  @click="checkItem(item)">
+                <font-awesome-icon :icon="['fas', 'cart-arrow-down']" />
+              </div>
               
               <div class="item_text">
-                <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
-                <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
+                <div class="name_badge">
+                  <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
+                  <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
+                  <div :class="item.badge" class="badge">{{ item.badge }}</div>
+                </div>
+
                 <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
                 <p v-else class="item_font">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
               </div>

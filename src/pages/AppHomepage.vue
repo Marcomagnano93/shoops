@@ -17,7 +17,8 @@ export default {
         itemName: '',
         itemQty: 1,
         checked: false,
-        kilos: false
+        kilos: false,
+        badge: ''
       }
     }
   },
@@ -119,11 +120,27 @@ export default {
               <!-- TYPE -->
                 <div class="form-check form-switch">
                     <label class="form-check-label c_lightpinky" for="flexSwitchCheckChecked">Misura in KG</label>
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="newItem.kilos">
+                    <input class="form-check-input bg_red" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="newItem.kilos">
                 </div>
 
+                <!-- BADGES -->
+                <div>
+                  <select class="form-select" aria-label="Default select example" v-model="newItem.badge">
+                    <option selected>Scegli una categoria</option>
+                    <option v-for="badge in store.badges"
+                    :value="badge">{{badge}}</option>
+                  </select>
+
+                </div>
+              <!-- ADD TO SHOPLIST -->
               <div class="button_gray" @click="addItem(this.newItem)">Aggiungi</div>
+
             </div>
+            <!-- <ul class="badges_form">
+                <li v-for="badge in store.badges">
+                  <p>{{ badge }}</p>
+                </li>
+              </ul> -->
             <div class="my-4">
                 <ul>
                     <li v-if="this.store.items.length === 0" class="my2"><h3>Aggiungi un prodotto per creare la tua lista!</h3></li>
@@ -135,20 +152,17 @@ export default {
                         </div>
                         
                         <div class="item_text">
-                            <p class="item_font c_red">{{ item.itemName }}</p>
+                            <div class="name_badge">
+                              <p class="item_font c_red">{{ item.itemName }}</p>
+                              <div :class="item.badge" class="badge">{{ item.badge }}</div>
+                            </div>
                             <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
                             <p v-else class="item_font">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
-
-
-
-        
-
-      
+        </div>      
       </div>
     </section>
   </main>
@@ -176,4 +190,10 @@ export default {
     background-color: var(--gray);
     margin-top: 4px;
 }
+
+
+
+/* .badges_form{
+  display: flex;
+} */
 </style>
