@@ -85,7 +85,7 @@ export default {
 <template>
   <main class="bg_lightpinky">
     <section class="h-100">
-        <div class="container d-flex justify-content-center">
+        <div class="container d-flex justify-content-center py-3">
           <ul class="shop_list">
             <li v-if="this.store.items.length === 0" class="my2">
                 <h3>A quanto pare non c'è nulla nella tua lista</h3>
@@ -114,8 +114,8 @@ export default {
                   <div :class="item.badge" class="badge">{{ item.badge }}</div>
                 </div>
 
-                <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
-                <p v-else class="item_font">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
+                <p v-if="Number.isInteger(item.itemQty) " class="item_font px-5">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
+                <p v-else class="item_font px-5">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
               </div>
               
             </li>

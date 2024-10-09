@@ -1,6 +1,7 @@
 @use './partials/palette.scss'; 
 @use './partials/fonts.scss'; 
-@use './partials/badges.scss'; 
+@use './partials/badges.scss';
+@use './partials/mediaquery.scss'; 
 
 #app {
   height: 100vh;
