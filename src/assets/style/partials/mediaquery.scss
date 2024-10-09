@@ -15,6 +15,9 @@
         width: 44px;
         height: 44px;
     }
+    .table_head{
+        font-size: 24px;
+    }
 }
 
 @media screen and (max-width: 698px){
@@ -39,5 +42,8 @@
         font-size: 20px;
         width: 60px;
         height: 60px;
+    }
+    .table_head{
+        font-size: 32px;
     }
 }

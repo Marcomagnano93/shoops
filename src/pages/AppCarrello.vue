@@ -85,7 +85,7 @@ export default {
 <template>
   <main class="bg_lightpinky">
     <section class="h-100">
-        <div class="container d-flex justify-content-center py-3">
+        <div class="container-fluid d-flex justify-content-center py-3">
           <ul class="shop_list">
             <li v-if="this.store.items.length === 0" class="my2">
                 <h3>A quanto pare non c'è nulla nella tua lista</h3>
@@ -111,11 +111,11 @@ export default {
                 <div class="name_badge">
                   <p class="check item_font c_gray" v-if="item.checked === true">{{ item.itemName }}</p>
                   <p v-if="item.checked === false" class="item_font c_red">{{ item.itemName }}</p>
-                  <div :class="item.badge" class="badge">{{ item.badge }}</div>
+                  <div :class="item.badge" class="badge mx-3">{{ item.badge }}</div>
                 </div>
 
-                <p v-if="Number.isInteger(item.itemQty) " class="item_font px-5">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
-                <p v-else class="item_font px-5">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
+                <p v-if="Number.isInteger(item.itemQty) " class="item_font spacing_right">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
+                <p v-else class="item_font">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
               </div>
               
             </li>
@@ -127,22 +127,22 @@ export default {
 
 <style>
 .table_head{
-    font-size: 32px;
+
     background-color: var(--orange);
     color: var(--lightpinky);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 12px 0 12px;
+    width: 100%;
+    padding: 0 4px 0 4px;
     border-radius: 12px;
 }
 .shop_list{
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 12px 0 0 0;
   padding: 0;
   box-sizing: border-box;
-  width: 800px;
+  width: 100%;
 }
 </style>
