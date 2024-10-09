@@ -68,13 +68,14 @@ export default {
                 <p>Nome</p>
               </div>
 
-              <div class="d-flex align-items-center mx-2">
+              <div class="d-flex gap-2 flex-column align-items-center mx-2">
                 <select class="form-select" aria-label="Default select example" v-model="filIt">
                     <option selected @click="filterItems()">Categoria</option>
                     <option v-for="badge in store.badges"
                     :value="badge" @click="filterItems()">{{badge}}</option>
                     <option value="" @click="filterItems()">Senza categoria</option>
                  </select>
+                 <div class="button_gray_sm" @click="filterItems()">Filtra</div>
               </div>
 
               <div class="col">
@@ -156,5 +157,25 @@ export default {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
+}
+
+
+.button_gray_sm{
+  display: flex;
+  max-width: 60px;
+  padding: 0 2px 0 2px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--gray);
+  color: var(--pinky);
+  cursor: pointer;
+  
+}
+.button_gray:hover{
+ 
+    transform: scale(1.1);
+    color: var(--lightpinky);
+  
 }
 </style>
