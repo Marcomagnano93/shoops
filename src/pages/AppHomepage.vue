@@ -124,7 +124,7 @@ export default {
                 </div>
 
                 <!-- BADGES -->
-                <div class="col-sm-100">
+                <div class="col">
                   <select class="form-select" aria-label="Default select example" v-model="newItem.badge">
                     <option selected>Scegli una categoria</option>
                     <option v-for="badge in store.badges"
@@ -134,16 +134,11 @@ export default {
                 </div class="col">
               <!-- ADD TO SHOPLIST -->
               <div class="button_gray" @click="addItem(this.newItem)">Aggiungi</div>
-
             </div>
-            <!-- <ul class="badges_form">
-                <li v-for="badge in store.badges">
-                  <p>{{ badge }}</p>
-                </li>
-              </ul> -->
+
             <div class="my-4">
-                <ul>
-                    <li v-if="this.store.items.length === 0" class="my2"><h3>Aggiungi un prodotto per creare la tua lista!</h3></li>
+                <ul class="list_edit">
+                    <li v-if="this.store.items.length === 0" class="my-2"><h3>Aggiungi un prodotto per creare la tua lista!</h3></li>
                     <li class="d-flex gap-3 my-2"
                     v-for="item in this.store.items">
 
@@ -154,7 +149,7 @@ export default {
                         <div class="item_text">
                             <div class="name_badge">
                               <p class="item_font c_red">{{ item.itemName }}</p>
-                              <div :class="item.badge" class="badge">{{ item.badge }}</div>
+                              <div :class="item.badge" class="badge mx-3">{{ item.badge }}</div>
                             </div>
                             <p v-if="Number.isInteger(item.itemQty) " class="item_font">{{ item.itemQty }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
                             <p v-else class="item_font">{{ item.itemQty.toFixed(2) }} <span class="c_gray" v-if="item.kilos === true">Kg</span></p>
@@ -170,6 +165,14 @@ export default {
 </template>
 
 <style>
+.list_edit{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
 .form_content {
   width: 100%;
   display: flex;

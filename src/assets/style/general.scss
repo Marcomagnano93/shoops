@@ -21,6 +21,13 @@ main {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  hyphens: auto;
+}
+
+.name_badge{
+  display: flex;
+  align-items: first baseline;
+  
 }
 
 .icon{
@@ -28,8 +35,7 @@ main {
   justify-content: center;
   align-items: center;
   border-radius: 9999px;
-  font-size: 20px;
-  width: 60px;
+
   cursor: pointer;
 }
 
@@ -66,8 +72,3 @@ ul, ol {
   
 }
 
-.name_badge{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
