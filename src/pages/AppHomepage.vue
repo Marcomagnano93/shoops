@@ -101,16 +101,16 @@ export default {
     <section class="h-100">
       <div class="container my-3 d-flex justify-content-center align-center">
         <div class="d-flex flex-column">
-            <div class="form_content bg_orange">
+            <div class="form_content bg_orange ">
               <!-- Item Name -->
-              <div>
+              <div class="col">
                 <input type="text" class="form-control" v-model="newItem.itemName" @click="errorNameSwitcher()" placeholder="Nome del prodotto" required>
                 <div class="alarm" v-if="this.nameError === true">Inserisci un nome</div>
                 
               </div>
     
               <!-- QTY -->
-              <div>
+              <div class="col">
                 <input type="number" class="form-control" v-model="newItem.itemQty" @click="errorQtySwitcher()" placeholder="Quantità 1-999" required>
                 <div class="alarm" v-if="this.qtyError === true">Inserisci una quantità</div>
                 <div class="alarm" v-if="this.qtyNegError === true">La quantità deve essere maggiore di 0</div>
@@ -118,20 +118,20 @@ export default {
               </div>
 
               <!-- TYPE -->
-                <div class="form-check form-switch">
+                <div class="form-check form-switch col">
                     <label class="form-check-label c_lightpinky" for="flexSwitchCheckChecked">Misura in KG</label>
                     <input class="form-check-input bg_red" type="checkbox" role="switch" id="flexSwitchCheckChecked" v-model="newItem.kilos">
                 </div>
 
                 <!-- BADGES -->
-                <div>
+                <div class="col-sm-100">
                   <select class="form-select" aria-label="Default select example" v-model="newItem.badge">
                     <option selected>Scegli una categoria</option>
                     <option v-for="badge in store.badges"
                     :value="badge">{{badge}}</option>
                   </select>
 
-                </div>
+                </div class="col">
               <!-- ADD TO SHOPLIST -->
               <div class="button_gray" @click="addItem(this.newItem)">Aggiungi</div>
 
@@ -178,6 +178,7 @@ export default {
   gap: 16px;
   border-radius: 24px;
   padding: 32px;
+
 }
 
 .alarm{
